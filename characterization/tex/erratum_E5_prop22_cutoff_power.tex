@@ -1,0 +1,83 @@
+% Erratum E5 for inclusion in main.tex.
+% Suggested use: \input{erratum_E5_prop22_cutoff_power}
+
+\subsection*{Erratum E5: the cutoff power in Proposition 2.2}
+\label{s:erratum:E5}
+
+In the proof of Proposition 2.2, specifically in the proof of
+inequality (26a), the displayed estimate with the cutoff parameter $s$ has
+the wrong homogeneity.  The term
+\[
+	s^2 \int_{[s,\infty)} \lambda^{-2\gamma}\,d\mu_x(\lambda)
+\]
+should be replaced, after the substitution $s=t^{1/\gamma}$, by
+\[
+	s^{2\gamma}
+	\int_{[s,\infty)} \lambda^{-2\gamma}\,d\mu_x(\lambda).
+\]
+Equivalently, before making the substitution, the factor should remain $t^2$.
+
+We spell out the corrected argument.  From equation (24), for every $t>0$
+and every cutoff $\rho>0$,
+\begin{align*}
+	|K_t^\gamma(x)|^2
+	&=
+	\int_{[0,\infty)}
+	\frac{t^2}{t^2+\lambda^{2\gamma}}\,d\mu_x(\lambda) \\
+	&\leq
+	\mu_x([0,\rho))
+	+
+	t^2\int_{[\rho,\infty)}\lambda^{-2\gamma}\,d\mu_x(\lambda).
+\end{align*}
+Indeed, on $[0,\rho)$ the integrand is at most $1$, while on
+$[\rho,\infty)$ it is at most $t^2\lambda^{-2\gamma}$.  Hence, choosing
+$\rho=t^{1/\gamma}$,
+\begin{align*}
+	\norm{x}{\nu:\gamma}^2
+	&=
+	\sup_{t>0}t^{-2\nu/\gamma}|K_t^\gamma(x)|^2 \\
+	&\leq
+	\sup_{t>0}t^{-2\nu/\gamma}
+	\biggl\{
+		\mu_x([0,t^{1/\gamma}))
+		+
+		t^2\int_{[t^{1/\gamma},\infty)}
+		\lambda^{-2\gamma}\,d\mu_x(\lambda)
+	\biggr\}.
+\end{align*}
+With $s:=t^{1/\gamma}$, this becomes
+\begin{align*}
+	\norm{x}{\nu:\gamma}^2
+	&\leq
+	\sup_{s>0}s^{-2\nu}
+	\biggl\{
+		\mu_x([0,s))
+		+
+		s^{2\gamma}
+		\int_{[s,\infty)}\lambda^{-2\gamma}\,d\mu_x(\lambda)
+	\biggr\}.
+\end{align*}
+Using inequality (13), with the corrected restriction $\gamma>\nu$ from
+Erratum E4, gives
+\[
+	\mu_x([0,s))
+	+
+	s^{2\gamma}
+	\int_{[s,\infty)}\lambda^{-2\gamma}\,d\mu_x(\lambda)
+	\leq
+	\frac{\gamma}{\gamma-\nu}s^{2\nu}\normiii{x}{\nu}^2 .
+\]
+Therefore
+\[
+	\norm{x}{\nu:\gamma}^2
+	\leq
+	\frac{\gamma}{\gamma-\nu}\normiii{x}{\nu}^2,
+\]
+which is exactly inequality (26a), i.e.
+\[
+	\sqrt{1-\nu/\gamma}\,\norm{x}{\nu:\gamma}
+	\leq
+	\normiii{x}{\nu}.
+\]
+Thus the statement of Proposition 2.2 is unchanged; only the
+homogeneous cutoff term in its proof must be corrected.

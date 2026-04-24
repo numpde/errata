@@ -1,0 +1,85 @@
+% Erratum E11 for inclusion in main.tex.
+% Suggested use: \input{erratum_E11_landweber_residual_sigma}
+
+\subsection*{Erratum E11: the residual representation in equation (64)}
+\label{s:erratum:E11}
+
+The residual representation in equation (64) is missing the factor $\sigma$.
+The corrected formula is
+\begin{align}
+\label{e:erratum:E11:residual}
+        y^\dag - T x_k
+        &=
+        (I-\sigma T T^*)^k (y^\dag - T x_0),
+        \\
+        y^\delta - T x_k^\delta
+        &=
+        (I-\sigma T T^*)^k (y^\delta - T x_0).
+\end{align}
+The formula printed in equation (64) is the special case $\sigma=1$.
+
+Indeed, put
+\[
+        r_k^\dag := y^\dag - T x_k .
+\]
+Using the Landweber iteration
+\[
+        x_k=x_{k-1}+\sigma T^*(y^\dag-Tx_{k-1}),
+\]
+\begin{align*}
+        r_k^\dag
+        &=
+        y^\dag - T x_{k-1}
+        - \sigma T T^*(y^\dag - T x_{k-1})
+        \\
+        &=
+        (I-\sigma T T^*) r_{k-1}^\dag .
+\end{align*}
+Thus induction gives the first identity in
+\eqref{e:erratum:E11:residual}.  Replacing $y^\dag$ by $y^\delta$ gives
+the second identity.
+
+The later residual comparison used in the discrepancy-principle paragraph
+remains valid after this correction.  Subtracting the two identities in
+\eqref{e:erratum:E11:residual} gives
+\begin{align*}
+        (y^\dag - T x_k) - (y^\delta - T x_k^\delta)
+        =
+        (I-\sigma T T^*)^k (y^\dag-y^\delta).
+\end{align*}
+Since $T T^*$ is nonnegative self-adjoint and
+\[
+        \sigma \norm{T T^*}{}
+        =
+        \sigma \norm{T^*T}{}
+        \leq 1
+\]
+by the stepsize condition
+\[
+        0<\sigma \norm{T^*T}{}\le 1,
+\]
+we have
+\[
+        \norm{I-\sigma T T^*}{} \leq 1 .
+\]
+Consequently, whenever the noise condition
+\[
+        \norm{ y^\dag - y^\delta }{} \le \delta
+\]
+holds,
+\begin{align*}
+        \left|
+                \norm{y^\dag - T x_k}{}
+                -
+                \norm{y^\delta - T x_k^\delta}{}
+        \right|
+        &\leq
+        \norm{(y^\dag - T x_k) - (y^\delta - T x_k^\delta)}{}
+        \\
+        &\leq
+        \norm{y^\dag-y^\delta}{}
+        \leq
+        \delta .
+\end{align*}
+Thus the estimate following equation (64) is correct, but it should be
+derived from the corrected residual formula \eqref{e:erratum:E11:residual}.

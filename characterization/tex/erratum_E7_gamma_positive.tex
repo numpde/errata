@@ -1,0 +1,55 @@
+% Erratum E7 for inclusion in main.tex.
+% Suggested use: \input{erratum_E7_gamma_positive}
+
+\subsection*{Erratum E7: the restriction $\gamma>0$ when $\nu/\gamma$ appears}
+\label{s:erratum:E7}
+
+Several definitions and statements use the quotient $\nu/\gamma$.  They
+should therefore be read with the restriction $\gamma>0$, unless a separate
+convention is explicitly introduced for the degenerate case $\gamma=0$.
+
+In particular, after the definition of $X_\gamma$ in equation (21), the
+interpolation spaces should be introduced as follows:
+\[
+        \text{for } \gamma>0 \text{ and } 0\leq \nu\leq \gamma,
+        \qquad
+        X_{\nu:\gamma}:=(X,X_\gamma)_{\nu/\gamma,\infty}.
+\]
+The case $\gamma=0$ is not covered by this formula, since then necessarily
+$\nu=0$ but the expression $\nu/\gamma$ is the indeterminate quotient $0/0$.
+If desired, one may add the separate convention
+\[
+        X_{0:0}:=X,
+        \qquad
+        \norm{\cdot}{0:0}:=\norm{\cdot}{}.
+\]
+This convention is not needed for the subsequent arguments.
+
+The same restriction is needed in Proposition 2.4.  Its statement
+should begin
+\[
+        \text{Let } \gamma>0,\quad 0\leq \nu\leq \gamma,
+        \quad\text{and }x\in X.
+\]
+Indeed, the displayed identity in Proposition 2.4 contains the three quantities
+\[
+        \norm{(T^*T)^\gamma\omega}{}^{-\nu/\gamma},
+        \qquad
+        N_{\nu/\gamma},
+        \qquad
+        \norm{x}{\nu:\gamma},
+\]
+all of which are undefined as written when $\gamma=0$.
+
+With the correction $\gamma>0$, the proposition itself is unchanged.  The
+endpoint cases discussed in its proof are then the meaningful endpoints
+$\nu=0$ and $\nu=\gamma$ for a fixed positive $\gamma$.  If one separately
+adopts the convention $X_{0:0}=X$, then the missing degenerate case
+$\gamma=\nu=0$ reduces only to the elementary identity
+\[
+        \sup_{\norm{\omega}{}=1}|\scalar{x,\omega}{}|
+        =
+        \norm{x}{}.
+\]
+Thus this erratum is a domain-of-notation correction: it does not change any
+of the nondegenerate estimates or their proofs.

@@ -1,0 +1,136 @@
+% Erratum E3 for inclusion in main.tex.
+% Suggested use: \input{erratum_E3_distance_identity}
+
+\subsection*{Erratum E3: the distance-function identity (9)--(10)}
+\label{s:erratum:E3}
+
+The identity (9) is false as stated because the quantity $E$ in
+(10) is not the right distance quantity.  Namely,
+for any $r>0$ the vector $x_1=0$ is admissible in the infimum defining $E$,
+and therefore
+\[
+	\inf_{\norm{x_1}{1}\leq r}
+	\norm{x-x_1}{0}^{1-\theta}\norm{x_1}{1}^{\theta}
+	=0 .
+\]
+Thus $E=0$ for every $x$.  In general this cannot equal
+$N_\theta^{-1}\norm{x}{\theta:1}$.  For instance, if $X=X_1=\IR$, both with
+the usual norm, and $x=1$, then
+\[
+	d(r)=\max\{1-r,0\},
+	\qquad
+	D=\sup_{0<r<1}(1-r)^{1-\theta}r^\theta
+	=(1-\theta)^{1-\theta}\theta^\theta>0,
+\]
+whereas the printed quantity $E$ is zero.
+
+The correct statement is
+\begin{equation}
+	N_\theta^{-1}\norm{x}{\theta:1}
+	=
+	D,
+	\qquad
+	D:=\sup_{r>0}d(r)^{1-\theta}r^\theta .
+	\label{e:erratum:E3:correct-D}
+\end{equation}
+Consequently, step c) in the proof of (9) should be deleted.  The
+passage from an infimum over $\norm{x_1}{1}\leq r$ to an infimum over
+$\norm{x_1}{1}=r$ is not valid for the printed expression $E$.
+
+We include a proof of the corrected identity \eqref{e:erratum:E3:correct-D}.
+Put
+\[
+	F:=\norm{x}{\theta:1},
+	\qquad
+	h(r):=d(r)^2 .
+\]
+From the definitions of $K_t$ and $d$, one has
+\begin{equation}
+	K_t(x)^2
+	=
+	\inf_{r\geq0}\{h(r)+t^2r^2\} .
+	\label{e:erratum:E3:K-distance}
+\end{equation}
+Indeed, the inequality ``$\geq$'' follows by taking
+$r=\norm{x_1}{1}$ in the definition of $K_t$, while the reverse inequality
+follows by approximating the infimum in the definition of $d(r)$.
+
+First suppose that $D<\infty$.  Then, for every $r>0$,
+\[
+	d(r)\leq D^{1/(1-\theta)} r^{-\theta/(1-\theta)} .
+\]
+Using this in \eqref{e:erratum:E3:K-distance} and minimizing over $r>0$ gives
+\[
+	K_t(x)^2
+	\leq
+	\inf_{r>0}
+	\left\{
+	D^{2/(1-\theta)}r^{-2\theta/(1-\theta)}+t^2r^2
+	\right\}
+	=
+	N_\theta^2D^2t^{2\theta} .
+\]
+Hence
+\[
+	F=\sup_{t>0}t^{-\theta}K_t(x)\leq N_\theta D .
+\]
+If $D=\infty$, this inequality is void.
+
+It remains to prove the reverse estimate.  If
+$\lim_{r\to\infty}d(r)>0$, then both $D$ and $F$ are infinite: the former is
+immediate from the definition of $D$, and the latter follows from
+\eqref{e:erratum:E3:K-distance} by letting $t\downarrow0$.  We may therefore
+assume that $d(r)\to0$ as $r\to\infty$.
+
+Let $r>0$ be such that $d(r)>0$.  Since $d$ is nonnegative, convex, and
+nonincreasing, the function $h=d^2$ is convex and nonincreasing.  Choose a
+subgradient $p\in\partial h(r)$.  Since $h$ is nonincreasing, every
+subgradient is nonpositive.  Moreover no subgradient can be zero: if
+$0\in\partial h(r)$, convexity would imply $h(s)\geq h(r)>0$ for all
+$s\geq0$, contradicting $h(s)\to0$ as $s\to\infty$.  Hence $p<0$.
+Define
+\[
+	t^2:=-\frac{p}{2r}>0 .
+\]
+The supporting-line inequality for $h$ gives, for all $s\geq0$,
+\[
+	h(s)\geq h(r)+p(s-r).
+\]
+Consequently,
+\[
+	h(s)+t^2s^2
+	\geq
+	h(r)+p(s-r)+t^2s^2
+	=
+	h(r)+t^2r^2+t^2(s-r)^2
+	\geq
+	h(r)+t^2r^2 .
+\]
+Thus $r$ minimizes $s\mapsto h(s)+t^2s^2$, and
+\eqref{e:erratum:E3:K-distance} gives
+\[
+	K_t(x)^2=d(r)^2+t^2r^2 .
+\]
+With $u:=tr/d(r)>0$, it follows that
+\[
+	t^{-\theta}K_t(x)
+	=
+	d(r)^{1-\theta}r^\theta
+	u^{-\theta}(1+u^2)^{1/2} .
+\]
+By the definition of $N_\theta$ in equation (4),
+\[
+	\inf_{u>0}u^{-\theta}(1+u^2)^{1/2}=N_\theta .
+\]
+Therefore
+\[
+	F\geq t^{-\theta}K_t(x)
+	\geq
+	N_\theta d(r)^{1-\theta}r^\theta .
+\]
+Taking the supremum over all $r>0$ with $d(r)>0$ yields
+\[
+	F\geq N_\theta D .
+\]
+Together with the first inequality, this proves
+\eqref{e:erratum:E3:correct-D}.

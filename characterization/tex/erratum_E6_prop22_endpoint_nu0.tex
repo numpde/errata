@@ -1,0 +1,93 @@
+% Erratum E6 for inclusion in main.tex.
+% Suggested use: \input{erratum_E6_prop22_endpoint_nu0}
+
+\subsection*{Erratum E6: the endpoint $\nu=0$ in Proposition 2.2}
+\label{s:erratum:E6}
+
+In the proof of Proposition 2.2, specifically in the proof of
+inequality (26b), the displayed choice
+\[
+        t=s^\gamma\sqrt{\frac{\gamma-\nu}{\nu}}
+\]
+is meaningful only for $0<\nu<\gamma$.  The endpoint $\nu=0$ should be
+handled separately.
+
+For $0<\nu<\gamma$, the printed argument is valid.  Indeed, putting
+$\theta:=\nu/\gamma$, the displayed choice of $t$ is exactly the value
+for which
+\[
+        s^{-2\nu}
+        =
+        N_{\theta}^{2}t^{-2\theta}
+        \frac{t^2}{t^2+s^{2\gamma}} .
+\]
+For $\lambda\leq s$ this gives
+\[
+        s^{-2\nu}
+        \leq
+        N_{\theta}^{2}t^{-2\theta}
+        \frac{t^2}{t^2+\lambda^{2\gamma}},
+\]
+and hence, using equation (24),
+\[
+        s^{-2\nu}\norm{E_{[0,s)}x}{}^2
+        \leq
+        N_{\theta}^{2}t^{-2\theta}|K_t^\gamma(x)|^2
+        \leq
+        N_{\theta}^{2}\norm{x}{\nu:\gamma}^{2} .
+\]
+Taking the supremum over $s>0$ yields
+\[
+        \normiii{x}{\nu}
+        \leq
+        N_{\nu/\gamma}\norm{x}{\nu:\gamma}
+\]
+for $0<\nu<\gamma$.
+
+It remains only to record the endpoint $\nu=0$.  Since $N_0=1$, the
+claim becomes
+\[
+        \normiii{x}{0}\leq\norm{x}{0:\gamma}.
+\]
+In fact equality holds.  First,
+\[
+        \normiii{x}{0}
+        =
+        \sup_{s>0}\norm{E_{[0,s)}x}{}
+        =
+        \norm{x}{}.
+\]
+The last equality follows because the spectral measure of $T^*T$ is
+compactly supported and $E_{[0,s)}$ equals the identity for all sufficiently
+large $s$.  On the other hand, by equation (24),
+\[
+        |K_t^\gamma(x)|^2
+        =
+        \int_{[0,\infty)}
+        \frac{t^2}{t^2+\lambda^{2\gamma}}\,d\mu_x(\lambda)
+        \leq
+        \int_{[0,\infty)}d\mu_x(\lambda)
+        =
+        \norm{x}{}^2 .
+\]
+Thus $\norm{x}{0:\gamma}\leq\norm{x}{}$.  Conversely, as
+$t\to\infty$ the integrand in equation (24) increases pointwise to $1$;
+by monotone convergence,
+\[
+        \lim_{t\to\infty}|K_t^\gamma(x)|^2
+        =
+        \norm{x}{}^2 .
+\]
+Therefore
+\[
+        \norm{x}{0:\gamma}
+        =
+        \sup_{t>0}|K_t^\gamma(x)|
+        =
+        \norm{x}{}
+        =
+        \normiii{x}{0}.
+\]
+This proves inequality (26b) also at $\nu=0$.  Thus the statement of
+Proposition 2.2 is unchanged; only the endpoint argument needs
+to be supplied separately.

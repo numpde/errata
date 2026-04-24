@@ -1,0 +1,99 @@
+% Erratum E1 for inclusion in main.tex.
+% Suggested use: \input{erratum_E1_Ncomm_endpoint}
+
+\subsection*{Erratum E1: the endpoint formulation of equation (6)}
+\label{s:erratum:E1}
+
+In the sentence preceding equation (6), the range
+$0 \leq \theta \leq 1$ should be replaced by
+$0 < \theta < 1$ if the displayed value of $\alpha$ is used.  Indeed,
+\[
+	\alpha
+	=
+	t^{1/k}
+	\left(\frac{1-\theta}{\theta}\right)^{1-1/(2k)}
+\]
+is not defined at the endpoints $\theta=0$ and $\theta=1$.
+The endpoint cases should instead be treated separately, or obtained by
+an explicit limiting argument.
+
+For completeness, let us recall the verification of equation (6) in
+the corrected range $0<\theta<1$.  Put
+\[
+	p := 2k \geq 1 .
+\]
+With the displayed choice of $\alpha$, one has
+\[
+	\alpha^p
+	=
+	t^2
+	\left(\frac{1-\theta}{\theta}\right)^{p-1},
+	\qquad\text{or equivalently}\qquad
+	t^2
+	=
+	\alpha^p
+	\left(\frac{\theta}{1-\theta}\right)^{p-1} .
+\]
+Using $N_\theta^{-2}=\theta^\theta(1-\theta)^{1-\theta}$, the left hand
+side of equation (6) becomes
+\[
+	N_\theta^{2(1-p)}
+	\frac{t^{2(1-\theta)}}{t^2+\lambda^p}
+	=
+	\frac{
+		\theta^{p-1}\alpha^{p(1-\theta)}
+	}{
+		\left(\frac{\theta}{1-\theta}\right)^{p-1}\alpha^p
+		+
+		\lambda^p
+	} .
+\]
+Thus equation (6) is equivalent to
+\[
+	(\alpha+\lambda)^p
+	\leq
+	(1-\theta)^{1-p}\alpha^p
+	+
+	\theta^{1-p}\lambda^p .
+\]
+This last estimate follows from convexity of $s\mapsto s^p$:
+\[
+	(\alpha+\lambda)^p
+	=
+	\left(
+		(1-\theta)\frac{\alpha}{1-\theta}
+		+
+		\theta\frac{\lambda}{\theta}
+	\right)^p
+	\leq
+	(1-\theta)^{1-p}\alpha^p
+	+
+	\theta^{1-p}\lambda^p .
+\]
+This proves the corrected form of equation (6).
+
+At the endpoints the displayed value of $\alpha$ should not be used.
+The relevant limiting scalar estimates are elementary.  For $\theta=0$,
+$N_0=1$ and
+\[
+	\frac{t^2}{t^2+\lambda^{2k}}
+	\leq
+	1
+	=
+	\lim_{\alpha\to\infty}
+	\left(\frac{\alpha}{\alpha+\lambda}\right)^{2k} .
+\]
+For $\theta=1$, $N_1=1$ and, for $\lambda>0$,
+\[
+	\frac{1}{t^2+\lambda^{2k}}
+	\leq
+	\lambda^{-2k}
+	=
+	\lim_{\alpha\downarrow0}
+	\left(\frac{1}{\alpha+\lambda}\right)^{2k} .
+\]
+The case $\lambda=0$ is interpreted in the extended sense in the last
+inequality; in the spectral applications of the paper, mass at
+$\lambda=0$ is absent because $T$ is assumed injective.  Hence any proof
+which uses equation (6) at $\theta=0$ or $\theta=1$ should replace
+that invocation by the corresponding endpoint argument.

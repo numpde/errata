@@ -1,0 +1,131 @@
+% Erratum E9 for inclusion in main.tex.
+% Suggested use: \input{erratum_E9_tikr_gamma_parameter}
+
+\subsection*{Erratum E9: the auxiliary Tikhonov problem in equations (55)--(56)}
+\label{s:erratum:E9}
+
+Equations (55)--(56) contain two related
+misprints.  First, the second term in equation (56),
+\[
+        \alpha \norm{x^\dag - x_0}{}^2,
+\]
+is independent of the minimization variable $x$.  Thus the printed
+minimization problem is not a Tikhonov functional.  For instance, when
+$\gamma>0$, the injectivity of $T$ implies the injectivity of
+$(T^*T)^{\gamma/2}$, and the printed minimizer is simply
+$x_{\alpha:\gamma}=x^\dag$.  Hence the middle term in equation (55)
+would be zero, which is impossible in general.
+
+Second, even after replacing $\norm{x^\dag-x_0}{}^2$ by
+$\norm{x-x_0}{}^2$, the power of the parameter in equation (55) has to
+be adjusted.  The corrected statement can be written in either of the
+following two equivalent forms.
+
+With a parameter $\beta>0$, define
+\begin{align}
+\label{e:erratum:E9:xbeta}
+        x_{\beta:\gamma}
+        :=
+        \mathop{\mathrm{argmin}}_{x\in X}
+        \left\{
+                \norm{(T^*T)^{\gamma/2}(x^\dag-x)}{}^2
+                +
+                \beta \norm{x-x_0}{}^2
+        \right\} .
+\end{align}
+Then, for $\gamma>0$ and $0\leq \nu\leq \gamma$,
+\begin{align}
+\label{e:erratum:E9:beta-estimate}
+        N_{\nu/\gamma}^{-1}
+        \norm{x^\dag-x_0}{\nu:\gamma}
+        \leq
+        \sup_{\beta>0}
+        \beta^{-\nu/\gamma}
+        \norm{x^\dag-x_{\beta:\gamma}}{}
+        \leq
+        \norm{x^\dag-x_0}{\nu:\gamma} .
+\end{align}
+Equivalently, if one wants to keep the factor $\alpha^{-\nu}$ appearing in
+equation (55), then equation (56) should be replaced by
+\begin{align}
+\label{e:erratum:E9:xalpha}
+        x_{\alpha:\gamma}
+        :=
+        \mathop{\mathrm{argmin}}_{x\in X}
+        \left\{
+                \norm{(T^*T)^{\gamma/2}(x^\dag-x)}{}^2
+                +
+                \alpha^\gamma \norm{x-x_0}{}^2
+        \right\} .
+\end{align}
+With this definition, the estimate in equation (55) is valid as printed.
+
+We include the verification.  Put
+\[
+        A:=T^*T,
+        \qquad
+        B:=A^{\gamma/2},
+        \qquad
+        e:=x^\dag-x_0 .
+\]
+For the corrected problem \eqref{e:erratum:E9:xbeta}, the normal equation is
+\[
+        (B^*B+\beta I)x_{\beta:\gamma}
+        =
+        B^*B x^\dag+\beta x_0 .
+\]
+Since $B^*B=A^\gamma$, this is
+\[
+        (A^\gamma+\beta I)x_{\beta:\gamma}
+        =
+        A^\gamma x^\dag+\beta x_0 .
+\]
+Subtracting this equation from
+\[
+        (A^\gamma+\beta I)x^\dag
+        =
+        A^\gamma x^\dag+\beta x^\dag
+\]
+gives
+\[
+        (A^\gamma+\beta I)(x^\dag-x_{\beta:\gamma})
+        =
+        \beta (x^\dag-x_0),
+\]
+and therefore
+\begin{align}
+\label{e:erratum:E9:error-filter}
+        x^\dag-x_{\beta:\gamma}
+        =
+        \beta(A^\gamma+\beta I)^{-1}e .
+\end{align}
+This is exactly the ordinary Tikhonov error formula for the operator
+$B=(T^*T)^{\gamma/2}$.
+
+For this operator $B$, the endpoint space in Proposition 3.1 is
+\[
+        \operatorname{range}(B^*B)
+        =
+        \operatorname{range}(A^\gamma)
+        =
+        X_\gamma,
+\]
+with the same norm, since
+\[
+        \norm{z}{1,B}
+        =
+        \norm{(B^*B)^{-1}z}{}
+        =
+        \norm{A^{-\gamma}z}{}
+        =
+        \norm{z}{\gamma} .
+\]
+Thus Proposition 3.1, applied to $B$ with interpolation exponent
+$\nu/\gamma$, gives precisely \eqref{e:erratum:E9:beta-estimate}.  Finally,
+setting
+\[
+        \beta=\alpha^\gamma
+\]
+turns $\beta^{-\nu/\gamma}$ into $\alpha^{-\nu}$ and converts
+\eqref{e:erratum:E9:xbeta} into \eqref{e:erratum:E9:xalpha}.  This proves
+equation (55) with the corrected definition of $x_{\alpha:\gamma}$.

@@ -1,0 +1,231 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[margin=3cm]{geometry}
+\usepackage{amsmath,amsthm}
+\allowdisplaybreaks
+\usepackage[bitstream-charter]{mathdesign}
+\usepackage[T1]{fontenc}
+\usepackage[pdftex,bookmarksopen,
+            pdftitle={Errata to Tikhonov and Landweber convergence rates},
+            pdfauthor={},
+            colorlinks,linkcolor=black,urlcolor=black,citecolor=black]{hyperref}
+
+\newcommand{\IR}{\mathbb{R}}
+\newcommand{\IN}{\mathbb{N}}
+\newcommand{\IT}{\mathbb{T}}
+\newcommand{\IX}{\mathbb{X}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\argmax}{\mathop{\mathrm{argmax}}}
+\newcommand{\norm}[2]{     \| #1       \|_{ #2 }}
+\newcommand{\Norm}[2]{\left\| #1 \right\|_{ #2 }}
+\newcommand{\normiii}[2]{\vert\kern-0.25ex\vert\kern-0.25ex\vert #1 \vert\kern-0.25ex \vert\kern-0.25ex\vert_{ #2 }}
+\newcommand{\Normiii}[2]{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert_{ #2 }}
+\newcommand{\scalar}[2]{     \langle #1       \rangle_{ #2 }}
+\newcommand{\Scalar}[2]{\left\langle #1 \right\rangle_{ #2 }}
+
+\newtheorem{remark}{Remark}
+
+\begin{document}
+
+\title{Errata to\\
+\emph{Tikhonov and Landweber convergence rates:\\ characterization by interpolation spaces}}
+\author{}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+This note records errata for the paper \emph{Tikhonov and Landweber convergence rates: characterization by interpolation spaces}.  Equation, section, lemma, and proposition numbers refer to the arXiv version \url{https://arxiv.org/abs/1503.05742v4}.  The errata list below states the corrections succinctly, and the subsequent notes give detailed justifications for selected items.
+\end{abstract}
+
+\section*{Errata list}
+
+\begin{enumerate}
+
+\item[\textup{(E1)}]
+In equation (6), the displayed value
+\[
+    \alpha
+    =
+    t^{1/k}
+    \left(\frac{1-\theta}{\theta}\right)^{1-1/(2k)}
+\]
+is meaningful only for $0<\theta<1$.  The endpoint cases $\theta=0,1$ should be treated separately, or obtained by a limiting argument.
+
+\item[\textup{(E2)}]
+In Section 2.3, the sentence claiming that the distance function $d$ has compact support if and only if $x\in X_1$ is not valid for an arbitrary continuous embedding $X_1\subset X$.  It should be deleted, or stated under an additional closedness assumption on the embedded balls of $X_1$ in $X$.
+
+\item[\textup{(E3)}]
+The identity (9)--(10) is false as stated.  The quantity
+\[
+    E
+    :=
+    \sup_{r>0}
+    \inf_{\norm{x_1}{1}\le r}
+    \norm{x-x_1}{0}^{1-\theta}
+    \norm{x_1}{1}^{\theta}
+\]
+does not equal $N_\theta^{-1}\norm{x}{\theta:1}$ in general.  The valid identity is
+\[
+    N_\theta^{-1}\norm{x}{\theta:1}
+    =
+    D,
+    \qquad
+    D:=\sup_{r>0}d(r)^{1-\theta}r^\theta .
+\]
+Consequently, the proof of (9), in particular step c), should be replaced.
+
+\item[\textup{(E4)}]
+In Lemma 2.1, the quantifier in inequality (13) should read
+\[
+    \forall\,\gamma>\nu
+\]
+instead of $\forall\,\gamma>0$.
+
+\item[\textup{(E5)}]
+In the proof of Proposition 2.2, inequality (26a), after the substitution $s:=t^{1/\gamma}$ the term
+\[
+    s^2\int_{[s,\infty)}\lambda^{-2\gamma}\,d\mu_x(\lambda)
+\]
+should be
+\[
+    s^{2\gamma}\int_{[s,\infty)}\lambda^{-2\gamma}\,d\mu_x(\lambda).
+\]
+Equivalently, one may keep the term as $t^2\int_{[s,\infty)}\lambda^{-2\gamma}\,d\mu_x(\lambda)$ until substituting $s=t^{1/\gamma}$.
+
+\item[\textup{(E6)}]
+In the proof of Proposition 2.2, inequality (26b), the displayed choice
+\[
+    t=s^\gamma\sqrt{\frac{\gamma-\nu}{\nu}}
+\]
+is meaningful only for $0<\nu<\gamma$.  The endpoint case $\nu=0$ should be handled separately.
+
+\item[\textup{(E7)}]
+Definitions and statements involving the quotient $\nu/\gamma$ require $\gamma>0$.  In particular, the definition of $X_{\nu:\gamma}$ and Proposition 2.4 should be read with this restriction whenever $\nu/\gamma$ appears.
+
+\item[\textup{(E8)}]
+The lower-bound part of the proof of Proposition 2.4 should not invoke the false $E$-identity in (9)--(10).  It should use only the corrected distance-function identity
+\[
+    N_\nu^{-1}\norm{x}{\nu:1}
+    =
+    \sup_{r>0}d(r)^{1-\nu}r^\nu,
+\]
+or be replaced by a direct Hilbert-space duality argument.
+
+\item[\textup{(E9)}]
+Equations (55)--(56) contain an incorrect minimization problem and an inconsistent parameter scaling.  To keep (55) with the factor $\alpha^{-\nu}$, equation (56) should read
+\[
+    x_{\alpha:\gamma}
+    :=
+    \argmin_{x\in X}
+    \left\{
+        \norm{(T^*T)^{\gamma/2}(x^\dag-x)}{}^2
+        +
+        \alpha^\gamma\norm{x-x_0}{}^2
+    \right\}.
+\]
+Equivalently, if a parameter $\beta$ is placed in front of $\norm{x-x_0}{}^2$, then the middle term in (55) should be
+\[
+    \sup_{\beta>0}
+    \beta^{-\nu/\gamma}
+    \norm{x^\dag-x_{\beta:\gamma}}{} .
+\]
+
+\item[\textup{(E10)}]
+In the proof of Proposition 3.2, the appeal to equation (6) does not literally cover the endpoint cases $\nu=0$ and $\nu=k$.  The proposition is correct, but these two cases should be justified separately.
+
+\item[\textup{(E11)}]
+The residual representation (64) is missing the factor $\sigma$.  It should read
+\[
+    y^\dag-Tx_k
+    =
+    (I-\sigma TT^*)^k(y^\dag-Tx_0),
+    \qquad
+    y^\delta-Tx_k^\delta
+    =
+    (I-\sigma TT^*)^k(y^\delta-Tx_0).
+\]
+
+\item[\textup{(E12)}]
+For general step size $\sigma$, the noisy Landweber splitting (65) should contain a factor $\sqrt{\sigma}$.  Namely,
+\[
+    \norm{x^\dag-x_k^\delta}{}
+    \le
+    \norm{x^\dag-x_k}{}
+    +
+    \delta\sqrt{\sigma k}.
+\]
+The printed estimate is valid after the normalization $\sigma=1$, or under an additional harmless adjustment of constants when $\sigma$ is fixed.
+
+\item[\textup{(E13)}]
+In equation (67), the factor $(1+k/\nu)^\nu$ requires $\nu>0$.  Thus the surrounding statement should not allow $\nu=0$ without a separate convention.
+
+\item[\textup{(E14)}]
+In the proof of Proposition 3.4, equation (74) is preceded by the claim that $\varepsilon_k$ maximizes
+\[
+    \lambda^{2(r+\nu)}(1-\sigma\lambda)^{2k}
+\]
+over $\lambda\ge0$.  The correct maximization domain is the spectral interval
+\[
+    0\le\lambda\le1/\sigma .
+\]
+
+\item[\textup{(E15)}]
+In the paragraph following equation (87), the sufficient condition for the discrepancy principle has the inequality reversed.  To ensure
+\[
+    \norm{y^\dag-Tx_k}{}\le\delta(\tau-1),
+\]
+one needs
+\[
+    c_2\varepsilon_k^{\nu+1/2}
+    \normiii{x^\dag-x_0}{\nu}
+    \le
+    \delta(\tau-1),
+\]
+not the reverse inequality.
+
+\item[\textup{(E16)}]
+The asymptotic estimate displayed in equation (84) after Proposition 3.4 is written in the normalization $\sigma=1$.  For general $\sigma$, the factor
+\[
+    \varepsilon_k^{r+\nu}
+    =
+    \sigma^{-(r+\nu)}
+    \left(\frac{r+\nu}{k+r+\nu}\right)^{r+\nu}
+\]
+contributes the corresponding power of $\sigma$.
+
+\end{enumerate}
+
+
+\input{erratum_E1_Ncomm_endpoint}
+
+\input{erratum_E2_distance_compact_support}
+
+\input{erratum_E3_distance_identity}
+
+\input{erratum_E4_lemma_mu_gamma_range}
+
+\input{erratum_E5_prop22_cutoff_power}
+
+\input{erratum_E6_prop22_endpoint_nu0}
+
+\input{erratum_E7_gamma_positive}
+
+\input{erratum_E8_prop24_lower_bound}
+
+\input{erratum_E9_tikr_gamma_parameter}
+
+\input{erratum_E10_tikk_endpoints}
+
+\input{erratum_E11_landweber_residual_sigma}
+
+\input{erratum_E12_landweber_noise_splitting_sigma}
+
+\input{erratum_E13_landweber_qok_nu0}
+
+\input{erratum_E14_landweber_argmax_domain}
+
+\input{erratum_E15_discrepancy_inequality}
+
+\input{erratum_E16_landweber_sigma_asymptotic}
+
+\end{document}

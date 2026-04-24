@@ -1,0 +1,79 @@
+% Erratum E16 for inclusion in main.tex.
+% Suggested use: \input{erratum_E16_landweber_sigma_asymptotic}
+
+\subsection*{Erratum E16: equation (84) in the general-$\sigma$ normalization}
+\label{s:erratum:E16}
+
+Equation (84), immediately following Proposition~3.4, is stated in the
+normalization $\sigma=1$.  For a general Landweber step size $\sigma$,
+the corresponding form is obtained by restoring the factor
+$\sigma^{-(r+\nu)}$.
+
+Indeed, the upper estimate in Proposition~3.4 gives, for each
+fixed $k\geq0$,
+\begin{align}
+\label{e:erratum:E16:upper}
+        \norm{(T^*T)^r(x^\dag-x_k)}{}
+        \leq
+        c_2\,\varepsilon_k^{r+\nu}
+        \normiii{x^\dag-x_0}{\nu},
+\end{align}
+where
+\[
+        \varepsilon_k
+        =
+        \frac{1}{\sigma}
+        \frac{r+\nu}{k+r+\nu} .
+\]
+Thus
+\begin{align}
+\label{e:erratum:E16:restored}
+        \varepsilon_k^{r+\nu}
+        =
+        \sigma^{-(r+\nu)}
+        \left(
+                \frac{r+\nu}{k+r+\nu}
+        \right)^{r+\nu} .
+\end{align}
+Putting $a:=r+\nu$, and keeping $r$ and $k$ fixed as
+$\nu\to\infty$, one has
+\begin{align*}
+        \left(\frac{a}{a+k}\right)^a
+        & =
+        \left(1+\frac{k}{a}\right)^{-a}
+        \\
+        & =
+        \exp\left(
+                -a\log\left(1+\frac{k}{a}\right)
+        \right)
+        \\
+        & =
+        \exp\left(
+                -k + \frac{k^2}{2a} + \mathcal{O}(a^{-2})
+        \right)
+        \\
+        & =
+        e^{-k}
+        \left(
+                1 + \frac{k^2}{2\nu}
+                + \mathcal{O}(\nu^{-2})
+        \right).
+\end{align*}
+Consequently, for general $\sigma$, equation (84) should read
+\begin{align}
+\label{e:erratum:E16:corrected-asymptotic}
+        \norm{ (T^* T)^r (x^\dag - x_k) }{}
+        \leq
+        c_2\,
+        \sigma^{-(r+\nu)}
+        e^{-k}
+        \left(
+                1 + \frac12 k^2 \nu^{-1}
+                + \mathcal{O}(\nu^{-2})
+        \right)
+        \normiii{x^\dag-x_0}{\nu}
+        \quad\text{as }\nu\to\infty,
+\end{align}
+for fixed $r$ and fixed $k$.  When $\sigma=1$,
+\eqref{e:erratum:E16:corrected-asymptotic} reduces to the display
+printed in the paper.

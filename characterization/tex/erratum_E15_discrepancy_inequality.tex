@@ -1,0 +1,110 @@
+% Erratum E15 for inclusion in main.tex.
+% Suggested use: \input{erratum_E15_discrepancy_inequality}
+
+\subsection*{Erratum E15: the sufficient inequality in the discrepancy-principle paragraph}
+\label{s:erratum:E15}
+
+In the paragraph following Proposition~3.4, the displayed
+sufficient condition for the discrepancy principle has the inequality in
+the wrong direction.  The corrected condition is
+\begin{align}
+\label{e:erratum:E15:corrected-condition}
+        c_2\,\varepsilon_k^{\nu+1/2}
+        \normiii{x^\dag-x_0}{\nu}
+        \leq
+        \delta(\tau-1).
+\end{align}
+The printed condition has the two sides of
+\eqref{e:erratum:E15:corrected-condition} reversed.
+
+Indeed, using the upper estimate in Proposition~3.4 with
+$r=1/2$ gives
+\begin{align}
+\label{e:erratum:E15:residual-upper-bound}
+        \norm{y^\dag-Tx_k}{}
+        & =
+        \norm{T(x^\dag-x_k)}{}
+        =
+        \norm{(T^*T)^{1/2}(x^\dag-x_k)}{}
+        \\
+        & \leq
+        c_2\,\varepsilon_k^{\nu+1/2}
+        \normiii{x^\dag-x_0}{\nu} .
+\end{align}
+Therefore \eqref{e:erratum:E15:corrected-condition} implies
+\[
+        \norm{y^\dag-Tx_k}{}
+        \leq
+        \delta(\tau-1).
+\]
+Together with the residual comparison established just before this
+paragraph,
+\[
+        \left|
+        \norm{y^\dag-Tx_k}{}
+        -
+        \norm{y^\delta-Tx_k^\delta}{}
+        \right|
+        \leq
+        \delta,
+\]
+this yields
+\[
+        \norm{y^\delta-Tx_k^\delta}{}
+        \leq
+        \norm{y^\dag-Tx_k}{}+
+        \delta
+        \leq
+        \delta\tau,
+\]
+which is precisely the discrepancy principle in equation (68).  The printed
+reverse inequality does not imply the desired residual estimate; it only
+says that the available upper bound in
+\eqref{e:erratum:E15:residual-upper-bound} is at least the target
+threshold.
+
+The corrected inequality also gives the same iteration-count estimate as
+claimed in the text.  For $r=1/2$,
+\[
+        \varepsilon_k
+        =
+        \frac{1}{\sigma}
+        \frac{\nu+1/2}{k+\nu+1/2} .
+\]
+Put
+\[
+        a:=\nu+\frac12,
+        \qquad
+        R:=\normiii{x^\dag-x_0}{\nu} .
+\]
+If $R=0$ the assertion is trivial.  Otherwise,
+\eqref{e:erratum:E15:corrected-condition} is equivalent to
+\[
+        c_2 R
+        \left(
+                \frac{a}{\sigma(k+a)}
+        \right)^a
+        \leq
+        \delta(\tau-1),
+\]
+or
+\[
+        k+a
+        \geq
+        \frac{a}{\sigma}
+        \left(
+                \frac{c_2 R}{\delta(\tau-1)}
+        \right)^{1/a} .
+\]
+Thus the discrepancy principle is met after at most
+\[
+        k^\star
+        =
+        O\!\left(\delta^{-1/a}\right)
+        =
+        O\!\left(\delta^{-2/(2\nu+1)}\right)
+\]
+iterations, with constants depending on the fixed quantities
+$\sigma$, $\tau$, $\nu$, $c_2$, and
+$\normiii{x^\dag-x_0}{\nu}$.  Thus only the direction of the displayed
+sufficient inequality has to be corrected.

@@ -1,0 +1,77 @@
+% Erratum E2 for inclusion in main.tex.
+% Suggested use: \input{erratum_E2_distance_compact_support}
+
+\subsection*{Erratum E2: compact support of the distance function}
+\label{s:erratum:E2}
+
+In Section 2.3 (``Distance function''), the sentence
+``It is clear that $d$ has compact support if and only if $x \in X_1$''
+is not valid for a general Banach space $X_1$ continuously embedded in
+$X$.  The correct statement is
+\[
+	 d \text{ has compact support}
+	 \quad\Longleftrightarrow\quad
+	 x \in \bigcup_{R>0}
+	 \overline{\{x_1\in X_1:\norm{x_1}{1}\leq R\}}^{\,X} .
+\]
+In particular, $x\in X_1$ implies that $d$ has compact support, but the
+converse requires an additional assumption, for instance that the closed
+balls of $X_1$ are closed in $X$.
+
+Here is a counterexample to the converse as stated.  Let
+$X=\ell^2(\IN_0)$ with orthonormal basis $u_0,u_1,u_2,\ldots$, and let
+$Z=\ell^1(\IN)$.  Define a bounded injective operator
+$J:Z\to X$ by
+\[
+	J a
+	:=
+	\left(\sum_{n\geq 1} a_n\right)u_0
+	+
+	\sum_{n\geq 1} \frac{a_n}{n} u_n .
+\]
+Let $X_1:=JZ\subset X$ and equip $X_1$ with the norm
+\[
+	\norm{J a}{1}:=\norm{a}{\ell^1}.
+\]
+Then $X_1$ is a Banach space continuously embedded in $X$.  Indeed,
+\[
+	\norm{Ja}{X}^2
+	=
+	\left|\sum_{n\geq 1}a_n\right|^2
+	+
+	\sum_{n\geq 1}\frac{|a_n|^2}{n^2}
+	\leq
+	2\norm{a}{\ell^1}^2 .
+\]
+Take $x:=u_0\in X$.  Then $x\notin X_1$: if $Ja=u_0$, then comparison
+of the $u_n$-coordinates for $n\geq 1$ gives $a_n=0$ for all $n$, and
+then the $u_0$-coordinate is also zero, a contradiction.
+
+On the other hand, for the unit vectors $e_n\in\ell^1(\IN)$ one has
+\[
+	J e_n = u_0 + \frac1n u_n,
+	\qquad
+	\Norm{J e_n}{1}=1,
+	\qquad
+	\Norm{J e_n-u_0}{X}=\frac1n .
+\]
+Consequently, for the distance function associated with this $x$,
+\[
+	d(1)
+	\leq
+	\inf_{n\geq 1}\Norm{J e_n-u_0}{X}
+	=0 .
+\]
+Thus $d(r)=0$ for all $r\geq 1$, so $d$ has compact support, while
+$x\notin X_1$.  This disproves the printed equivalence in the stated
+generality.
+
+The printed sentence becomes correct under the additional hypothesis that
+each ball
+\[
+	\{x_1\in X_1:\norm{x_1}{1}\leq R\}
+\]
+is closed in $X$.  Under that hypothesis, $d(R)=0$ implies that $x$ lies
+in such a closed ball, hence $x\in X_1$.  This extra hypothesis holds,
+for example, when $X_1$ is reflexive and the embedding $X_1\hookrightarrow
+X$ is continuous.

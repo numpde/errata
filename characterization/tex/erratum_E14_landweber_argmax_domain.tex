@@ -1,0 +1,89 @@
+% Erratum E14 for inclusion in main.tex.
+% Suggested use: \input{erratum_E14_landweber_argmax_domain}
+
+\subsection*{Erratum E14: the maximization domain in the proof of Proposition~3.4}
+\label{s:erratum:E14}
+
+In the proof of Proposition~3.4, the line preceding the
+normalization $x_0=0$ and $\sigma=1$ should not maximize over all
+$\lambda\geq0$.  The correct statement is that
+\begin{align}
+\label{e:erratum:E14:corrected-argmax}
+        \varepsilon_k
+        =
+        \argmax_{0\leq \lambda\leq 1/\sigma}
+        \lambda^{2(r+\nu)}(1-\sigma\lambda)^{2k},
+        \qquad k\geq0 .
+\end{align}
+Equivalently, after the normalization $\sigma=1$, the maximization is over
+$0\leq\lambda\leq1$.  This is the relevant interval, since the step-size
+condition
+\[
+        0 < \sigma \norm{T^* T}{} \leq 1
+\]
+implies
+\[
+        \operatorname{supp}\mu_{x^\dag-x_0}
+        \subset [0,\|T^*T\|]
+        \subset [0,1/\sigma].
+\]
+The formulation with $\lambda\geq0$ is false: outside the stability
+interval $[0,1/\sigma]$ the factor $(1-\sigma\lambda)^{2k}$ grows again,
+and the displayed function is not maximized at $\varepsilon_k$.
+
+We verify \eqref{e:erratum:E14:corrected-argmax}.  Put
+\[
+        a:=r+\nu>0,
+        \qquad
+        f_k(\lambda)
+        :=
+        \lambda^{2a}(1-\sigma\lambda)^{2k} .
+\]
+For $k=0$, $f_0(\lambda)=\lambda^{2a}$ is maximized on
+$[0,1/\sigma]$ at $\lambda=1/\sigma$, which is precisely
+\[
+        \varepsilon_0
+        =
+        \frac{1}{\sigma}\frac{a}{a}
+        =
+        \frac{1}{\sigma} .
+\]
+For $k\geq1$, consider $0<\lambda<1/\sigma$.  Then
+\[
+        \frac{d}{d\lambda}\log f_k(\lambda)
+        =
+        \frac{2a}{\lambda}
+        -
+        \frac{2k\sigma}{1-\sigma\lambda} .
+\]
+The unique critical point is therefore determined by
+\[
+        a(1-\sigma\lambda)=k\sigma\lambda,
+\]
+that is,
+\[
+        \lambda
+        =
+        \frac{1}{\sigma}\frac{a}{k+a}
+        =
+        \frac{1}{\sigma}\frac{r+\nu}{k+r+\nu}
+        =
+        \varepsilon_k .
+\]
+Moreover,
+\[
+        \frac{d^2}{d\lambda^2}\log f_k(\lambda)
+        =
+        -\frac{2a}{\lambda^2}
+        -
+        \frac{2k\sigma^2}{(1-\sigma\lambda)^2}
+        <0,
+\]
+so this critical point is the unique maximum in the open interval.  Since
+$f_k(0)=f_k(1/\sigma)=0$ for $k\geq1$, it is also the maximum on
+$[0,1/\sigma]$.
+
+This correction does not affect the proof of Proposition~3.4.  All
+spectral integrals used there are supported in
+$[0,\|T^*T\|]\subset[0,1/\sigma]$, and the subsequent estimates use
+only this stability interval.

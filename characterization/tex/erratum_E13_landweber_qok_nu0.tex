@@ -1,0 +1,50 @@
+% Erratum E13 for inclusion in main.tex.
+% Suggested use: \input{erratum_E13_landweber_qok_nu0}
+
+\subsection*{Erratum E13: the parameter range in equation (67)}
+\label{s:erratum:E13}
+
+The statement surrounding equation (67) should require $\nu>0$, or else
+an explicit limiting convention should be imposed.  As printed, the factor
+\[
+        (1+k/\nu)^\nu
+\]
+is undefined when $\nu=0$.  Thus the sentence following equation (67)
+should read that the hidden constants may depend on the fixed parameter
+$\nu>0$.
+
+This is only a parameter-range correction.  It is consistent with
+Proposition~3.4, which is also stated for $\nu>0$.  Indeed, when
+$r=0$ the normalization in Proposition~3.4 is
+\[
+        \varepsilon_k
+        =
+        \frac{1}{\sigma}\frac{\nu}{k+\nu},
+\]
+and therefore
+\[
+        \varepsilon_k^{-\nu}
+        =
+        \sigma^\nu(1+k/\nu)^\nu .
+\]
+Since $\sigma$ is fixed, the factor in equation (67) is just the
+Landweber rate normalization from Proposition~3.4, up to the
+constant $\sigma^\nu$.  This normalization is meaningful for $\nu>0$.
+
+If one wants to include the endpoint $\nu=0$ formally, the natural
+convention is the limit
+\[
+        \lim_{\nu\downarrow0}(1+k/\nu)^\nu = 1
+        \qquad (k \text{ fixed}),
+\]
+and then equation (67) becomes the boundedness comparison
+\[
+        \sup_{\norm{ y^\dag - y^\delta }{} \le \delta}
+        \norm{x^\dag - x_{\bar{k}(\delta,y^\delta,\ldots)}^\delta}{}
+        \sim
+        \sup_{k\geq0}
+        \norm{x^\dag - x_k}{} .
+\]
+This endpoint convention, however, is separate from the algebraic-rate
+case treated in Proposition~3.4.  The simplest correction is
+therefore to state equation (67) only for $\nu>0$.

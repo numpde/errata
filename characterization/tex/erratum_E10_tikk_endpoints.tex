@@ -1,0 +1,112 @@
+% Erratum E10 for inclusion in main.tex.
+% Suggested use: \input{erratum_E10_tikk_endpoints}
+
+\subsection*{Erratum E10: endpoint cases in Proposition 3.2}
+\label{s:erratum:E10}
+
+The proof of Proposition 3.2 says that the first inequality in
+inequality (59) is a consequence of equation (6) with
+$\theta=\nu/k$.  This is correct in the interior case $0<\nu<k$.  At the
+endpoints $\nu=0$ and $\nu=k$, however, the displayed choice of the
+parameter in equation (6) degenerates, as noted in Erratum E1.  The
+statement of Proposition 3.2 remains correct, but the endpoint
+cases should be justified separately.
+
+Put
+\[
+        e:=x^\dag-x_0,
+        \qquad
+        A:=T^*T,
+        \qquad
+        S_\alpha:=\alpha(A+\alpha I)^{-1} .
+\]
+By equation (44),
+\[
+        x^\dag-x_{\alpha,k}=S_\alpha^k e .
+\]
+The spectral representation used in the proof is
+\begin{align}
+\label{e:erratum:E10:spectral}
+        \alpha^{-2\nu}\norm{S_\alpha^k e}{}^2
+        =
+        \alpha^{-2\nu}
+        \int_{[0,\infty)}
+        \left(\frac{\alpha}{\alpha+\lambda}\right)^{2k}
+        d\mu_e(\lambda).
+\end{align}
+
+First let $\nu=0$.  Then $N_0=1$ and, by the identity $X_{0:k}=X$ from
+equation (25),
+\[
+        \norm{e}{0:k}=\norm{e}{} .
+\]
+For every $\alpha>0$ the multiplier
+$\alpha/(\alpha+\lambda)$ is bounded by $1$, so
+\[
+        \norm{S_\alpha^k e}{} \leq \norm{e}{} .
+\]
+On the other hand,
+\[
+        \left(\frac{\alpha}{\alpha+\lambda}\right)^{2k}
+        \longrightarrow 1
+        \qquad (\alpha\to\infty)
+\]
+for every $\lambda\geq0$, and the integrand is bounded by $1$.  Hence
+Lebesgue dominated convergence gives
+\[
+        \lim_{\alpha\to\infty}\norm{S_\alpha^k e}{}^2
+        =
+        \int_{[0,\infty)} d\mu_e(\lambda)
+        =
+        \norm{e}{}^2 .
+\]
+Thus
+\[
+        \sup_{\alpha>0}\norm{x^\dag-x_{\alpha,k}}{}
+        =
+        \norm{e}{}
+        =
+        \norm{e}{0:k},
+\]
+which proves inequality (59) at $\nu=0$, in fact with equality.
+
+Now let $\nu=k$.  Then $N_1=1$ and, again by the identity $X_{k:k}=X_k$
+from equation (25),
+\[
+        \norm{e}{k:k}=\norm{e}{k} .
+\]
+From \eqref{e:erratum:E10:spectral},
+\begin{align}
+\label{e:erratum:E10:nuk}
+        \alpha^{-2k}\norm{S_\alpha^k e}{}^2
+        =
+        \int_{[0,\infty)}
+        (\alpha+\lambda)^{-2k}
+        d\mu_e(\lambda).
+\end{align}
+Since $T$ is injective, $E_{\{0\}}=0$, hence $\mu_e(\{0\})=0$.  For
+$\lambda>0$ the function $(\alpha+\lambda)^{-2k}$ increases to
+$\lambda^{-2k}$ as $\alpha\searrow0$.  Therefore the monotone convergence
+theorem, with the value $+\infty$ allowed, gives
+\[
+        \lim_{\alpha\searrow0}
+        \alpha^{-2k}\norm{S_\alpha^k e}{}^2
+        =
+        \int_{[0,\infty)} \lambda^{-2k}\,d\mu_e(\lambda)
+        =
+        \norm{e}{k}^2 .
+\]
+Consequently,
+\[
+        \sup_{\alpha>0}
+        \alpha^{-k}\norm{x^\dag-x_{\alpha,k}}{}
+        =
+        \lim_{\alpha\searrow0}
+        \alpha^{-k}\norm{x^\dag-x_{\alpha,k}}{}
+        =
+        \norm{e}{k}
+        =
+        \norm{e}{k:k} .
+\]
+This proves inequality (59) at $\nu=k$ and also justifies the final
+sentence of Proposition 3.2.

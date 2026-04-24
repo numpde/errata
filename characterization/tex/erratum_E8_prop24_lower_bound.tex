@@ -1,0 +1,122 @@
+% Erratum E8 for inclusion in main.tex.
+% Suggested use: \input{erratum_E8_prop24_lower_bound}
+
+\subsection*{Erratum E8: the lower-bound proof in Proposition 2.4}
+\label{s:erratum:E8}
+
+The lower-bound part of the proof of Proposition 2.4 invokes the
+identity (9).  Since the $E$-part of (9) is false, that
+part of the proof should either use only the corrected distance-function
+identity from Erratum E3, or be replaced by a direct Hilbert-space duality
+argument.  We record such a replacement here.
+
+The first half of the proof in the paper already proves the inequality
+``$\leq$'' in equation (36).  It remains only to justify the reverse
+inequality in the interior case $0<\nu<\gamma$.  Put
+\[
+        \theta:=\frac{\nu}{\gamma},
+        \qquad
+        B:=(T^*T)^\gamma .
+\]
+For nonzero $\omega\in X$ define
+\[
+        F(x)
+        :=
+        \sup_{\omega\neq0}
+        \frac{|\scalar{x,\omega}{}|}
+             {\norm{\omega}{}^{1-\theta}\norm{B\omega}{}^\theta} .
+\]
+By homogeneity this is the same quantity as the left-hand side of
+equation (36).  If $F(x)=\infty$, there is nothing to prove, so assume
+$F(x)<\infty$.
+
+We use the following dual representation of the $K$-functional.  From
+equation (24), or equivalently from the spectral theorem,
+\[
+        |K_t^\gamma(x)|^2
+        =
+        \scalar{M_t x,x}{},
+        \qquad
+        M_t:=t^2(t^2+B^2)^{-1}.
+\]
+Since $B$ is bounded and self-adjoint, $M_t$ is bounded, positive, and
+boundedly invertible, with
+\[
+        M_t^{-1}=I+t^{-2}B^2.
+\]
+Therefore
+\begin{align}
+        K_t^\gamma(x)
+        &=
+        \sup_{\omega\neq0}
+        \frac{|\scalar{x,\omega}{}|}
+             {\bigl(\scalar{M_t^{-1}\omega,\omega}{}\bigr)^{1/2}}        
+        \notag\\
+        &=
+        \sup_{\omega\neq0}
+        \frac{|\scalar{x,\omega}{}|}
+             {\left(\norm{\omega}{}^2+t^{-2}\norm{B\omega}{}^2\right)^{1/2}} .
+        \label{e:erratum:E8:dual-K}
+\end{align}
+Indeed, the identity is the elementary Hilbert-space formula
+\[
+        \scalar{M_t x,x}{}^{1/2}
+        =
+        \sup_{\omega\neq0}
+        \frac{|\scalar{x,\omega}{}|}
+             {\scalar{M_t^{-1}\omega,\omega}{}^{1/2}} .
+\]
+
+By the definition of $F(x)$,
+\[
+        |\scalar{x,\omega}{}|
+        \leq
+        F(x)\norm{\omega}{}^{1-\theta}\norm{B\omega}{}^\theta .
+\]
+Using Young's inequality in the form of equation (5), with
+$a=\norm{\omega}{}^2$ and $b=t^{-2}\norm{B\omega}{}^2$, gives
+\[
+        N_\theta
+        \norm{\omega}{}^{1-\theta}
+        \bigl(t^{-1}\norm{B\omega}{}\bigr)^\theta
+        \leq
+        \left(\norm{\omega}{}^2+t^{-2}\norm{B\omega}{}^2\right)^{1/2}.
+\]
+Equivalently,
+\[
+        \norm{\omega}{}^{1-\theta}\norm{B\omega}{}^\theta
+        \leq
+        N_\theta^{-1} t^\theta
+        \left(\norm{\omega}{}^2+t^{-2}\norm{B\omega}{}^2\right)^{1/2}.
+\]
+Substituting this into \eqref{e:erratum:E8:dual-K} yields, for every
+$t>0$,
+\[
+        K_t^\gamma(x)
+        \leq
+        N_\theta^{-1} F(x) t^\theta .
+\]
+Consequently,
+\[
+        \norm{x}{\nu:\gamma}
+        =
+        \sup_{t>0}t^{-\theta}K_t^\gamma(x)
+        \leq
+        N_\theta^{-1}F(x).
+\]
+Thus
+\[
+        N_{\nu/\gamma}\norm{x}{\nu:\gamma}
+        \leq
+        F(x),
+\]
+which is precisely the missing inequality ``$\geq$'' in equation (36).
+Combined with the already proved opposite inequality, this gives
+\[
+        F(x)=N_{\nu/\gamma}\norm{x}{\nu:\gamma}.
+\]
+
+This argument replaces the appeal to the variational-source-condition results
+and avoids any use of the false $E$-identity in (9).  The endpoint
+cases $\nu=0$ and $\nu=\gamma$ remain as stated in the original proof, subject
+only to the restriction $\gamma>0$ noted in Erratum E7.

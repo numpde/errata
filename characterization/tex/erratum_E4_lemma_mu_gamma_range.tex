@@ -1,0 +1,86 @@
+% Erratum E4 for inclusion in main.tex.
+% Suggested use: \input{erratum_E4_lemma_mu_gamma_range}
+
+\subsection*{Erratum E4: the range of $\gamma$ in Lemma 2.1}
+\label{s:erratum:E4}
+
+In Lemma 2.1, the quantifier in inequality (13) should be
+$\gamma>\nu$, not merely $\gamma>0$.  Thus the corrected statement is
+\begin{equation}
+\begin{split}
+	\mu([0,\Lambda))
+	+
+	\Lambda^{2\gamma}
+	\int_{[\Lambda,\infty)}\lambda^{-2\gamma}\,d\mu(\lambda)
+	&\leq
+	\frac{\gamma}{\gamma-\nu}
+	\Lambda^{2\nu}\normiii{\mu}{\nu}^{2} \\
+	&\hspace{2cm}
+	\forall\Lambda>0,
+	\qquad
+	\forall\gamma>\nu .
+\end{split}
+\label{e:erratum:E4:correct-tail2}
+\end{equation}
+The printed range cannot be correct.  If $0<\gamma<\nu$, then the factor
+$\gamma/(\gamma-\nu)$ is negative, while the left-hand side of
+inequality (13) is nonnegative.  If $\gamma=\nu$, the displayed constant is
+undefined, and no uniform estimate of this form follows from
+$\normiii{\mu}{\nu}<\infty$ alone.  For example, on $[0,\infty)$ consider
+\[
+	d\mu(\lambda)
+	=
+	2\nu\lambda^{2\nu-1}\mathbf{1}_{(0,1)}(\lambda)\,d\lambda .
+\]
+Then $\normiii{\mu}{\nu}=1$, but for $0<\Lambda<1$,
+\[
+	\Lambda^{2\nu}
+	\int_{[\Lambda,\infty)}\lambda^{-2\nu}\,d\mu(\lambda)
+	=
+	2\nu\Lambda^{2\nu}\log(1/\Lambda),
+\]
+so the ratio of the left-hand side to $\Lambda^{2\nu}$ is unbounded as
+$\Lambda\downarrow0$.
+
+We recall the proof of the corrected assertion.  Let
+\[
+	I(t):=\mu([0,t)),
+	\qquad
+	M:=\normiii{\mu}{\nu}^{2}.
+\]
+Then $I(t)\leq t^{2\nu}M$ for all $t>0$.  For $\gamma>\nu$, integration by
+parts gives
+\[
+	\int_{[\Lambda,\infty)}\lambda^{-2\gamma}\,d\mu(\lambda)
+	=
+	-\Lambda^{-2\gamma}I(\Lambda)
+	+
+	2\gamma\int_{\Lambda}^{\infty}
+	\lambda^{-2\gamma-1}I(\lambda)\,d\lambda .
+\]
+Using $I(\lambda)\leq\lambda^{2\nu}M$ under the integral yields
+\[
+\begin{split}
+	\int_{[\Lambda,\infty)}\lambda^{-2\gamma}\,d\mu(\lambda)
+	&\leq
+	-\Lambda^{-2\gamma}I(\Lambda)
+	+
+	2\gamma M\int_{\Lambda}^{\infty}
+	\lambda^{2\nu-2\gamma-1}\,d\lambda \\
+	&=
+	-\Lambda^{-2\gamma}I(\Lambda)
+	+
+	\frac{\gamma}{\gamma-\nu}
+	\Lambda^{2\nu-2\gamma}M .
+\end{split}
+\]
+Multiplying by $\Lambda^{2\gamma}$ and adding $I(\Lambda)$ gives
+\eqref{e:erratum:E4:correct-tail2}.  The convergence of the integral
+\[
+	\int_{\Lambda}^{\infty}\lambda^{2\nu-2\gamma-1}\,d\lambda
+\]
+is exactly the point at which the condition $\gamma>\nu$ is needed.
+
+This correction does not affect the later use of inequality (13) in
+Proposition 2.2, where the hypotheses already impose
+$0\leq\nu<\gamma$.
