@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Errata</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f3ea;
+      --paper: #fffdf8;
+      --ink: #1d1a17;
+      --muted: #6a6259;
+      --rule: #d7cdbf;
+      --accent: #8b2f1c;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top right, rgba(139, 47, 28, 0.08), transparent 24rem),
+        linear-gradient(180deg, #f8f4ec 0%, var(--bg) 100%);
+      color: var(--ink);
+    }
+
+    main {
+      max-width: 46rem;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      box-shadow: 0 1.2rem 3rem rgba(20, 16, 12, 0.08);
+      padding: 2rem;
+    }
+
+    h1 {
+      margin: 0 0 0.75rem;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.05;
+      font-weight: 700;
+    }
+
+    p {
+      margin: 0 0 1rem;
+      line-height: 1.65;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    ul {
+      margin: 1.5rem 0 0;
+      padding-left: 1.2rem;
+    }
+
+    li {
+      margin: 0.7rem 0;
+      line-height: 1.5;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    a:hover {
+      text-decoration-thickness: 2px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="card">
+      <h1>Errata</h1>
+      <p>
+        This repository contains errata for
+        <em>Tikhonov and Landweber convergence rates: characterization by interpolation spaces</em>.
+      </p>
+      <ul>
+        <li><a href="characterization/tex/errata_list.pdf">Errata PDF</a></li>
+        <li><a href="https://arxiv.org/abs/1503.05742v4">Original paper on arXiv</a></li>
+        <li><a href="characterization/tex/errata_list.tex">Errata source</a></li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
