@@ -1,0 +1,236 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\theoremstyle{definition}
+\newtheorem*{theorem*}{Corrected theorem}
+
+\newcommand{\Nzero}{\mathbb N_0}
+\newcommand{\dd}{\partial_t}
+\newcommand{\Ltwo}{L^2(J)}
+\newcommand{\K}{K}
+\newcommand{\gam}{\gamma_B}
+\newcommand{\Yone}{Y_1}
+\newcommand{\Y}{Y}
+\newcommand{\V}{V}
+\newcommand{\Vprime}{V'}
+\newcommand{\hatF}{\widehat F}
+\newcommand{\dotE}{\dot E}
+\newcommand{\hatY}{\widehat Y}
+\newcommand{\clLtwo}[1]{\overline{#1}^{\,L^2(J)}}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+
+\title{Theorem 5.2.18 errata}
+\author{RA}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+	\noindent
+This note records errata to Theorem 5.2.18 in 
+\begin{quote}
+RA,
+\emph{Stability of space-time Petrov-Galerkin discretizations for
+parabolic evolution equations}, 2012,
+\href{https://doi.org/10.3929/ethz-a-007563932}{doi:10.3929/ethz-a-007563932}.
+\end{quote}
+The theorem's conclusion remains the uniform discrete inf-sup estimate
+\[
+  \inf_{L\in\Nzero}\gam(X_L,Y_L)>0.
+\]
+The corrections below make explicit the intended meaning of the sparse
+tensor notation, add the closedness convention needed in the abstract
+statement, and fill in the omitted transfer from the auxiliary test space
+to the actual test space.
+\end{abstract}
+
+\section*{1. Corrections to the surrounding notation}
+
+\begin{enumerate}[label=\textbf{C\arabic*.},leftmargin=2.5em]
+\item \textbf{Sparse tensor symbols.}
+The symbols \(\bigcup\) in Proposition 4.4.12, Proposition 5.2.14, Remark 5.2.15, and Theorem 5.2.18 should be read as linear sums, not literal set-theoretic unions.  Thus, for example,
+\[
+  X_L=\sum_{0\le k+\ell\le L}E_k\otimes U_\ell,
+  \qquad
+  Y_{L,1}=\sum_{0\le k+\ell\le L}F_k\otimes V_\ell .
+\]
+A literal union of subspaces need not be a subspace.
+
+\item \textbf{Auxiliary temporal spaces.}
+In the proof of Theorem 5.2.18 the auxiliary temporal space \(E_k+\dd E_k\) should be replaced, in the infinite-dimensional abstract formulation, by its \(L^2(J)\)-closure:
+\[
+  \hatF_k:=\clLtwo{E_k+\dd E_k},
+  \qquad
+  \dotE_k:=\clLtwo{\dd E_k}.
+\]
+For the finite-dimensional spline and wavelet spaces used later in the thesis, the closures are unnecessary.
+
+\item \textbf{Auxiliary test space.}
+The auxiliary test space should be written as
+\[
+  \hatY_L=\hatY_{L,1}\times V_L,
+  \qquad
+  \hatY_{L,1}:=\sum_{0\le k+\ell\le L}\hatF_k\otimes V_\ell .
+\]
+If the printed expression is interpreted as a sum of product subspaces, its second component is \(V_L\) by nestedness of the \(V_\ell\).
+\end{enumerate}
+
+\section*{2. Corrected theorem, basic sparse case}
+
+\begin{theorem*}
+Let \((E_k,F_k)_{k\in\Nzero}\) be an admissible temporal pair in the sense of Definition 5.2.17.  Let
+\[
+  U_\ell\subseteq V_\ell\subseteq V,
+  \qquad \ell\in\Nzero,
+\]
+be nested non-trivial closed spatial subspaces satisfying
+\[
+  \eta:=\inf_{\ell\in\Nzero}\K_{V'\times V}(U_\ell,V_\ell)>0.
+\]
+Assume, in addition, either that all building blocks are finite-dimensional, or that the auxiliary spaces defined in \textnormal{C2--C3} and the finite sparse tensor sums below are closed subspaces of the ambient Hilbert spaces.
+
+For \(L\in\Nzero\), define
+\[
+  X_L:=\sum_{0\le k+\ell\le L}E_k\otimes U_\ell,
+  \qquad
+  Y_{L,1}:=\sum_{0\le k+\ell\le L}F_k\otimes V_\ell,
+  \qquad
+  Y_L:=Y_{L,1}\times V_L .
+\]
+Then
+\[
+  \inf_{L\in\Nzero}\gam(X_L,Y_L)>0.
+\]
+The full tensor, anisotropic sparse tensor, and finite-sum variants in Remark 5.2.15 remain valid after the same changes.
+\end{theorem*}
+
+\section*{3. Proof of the corrected theorem}
+
+\paragraph{Step 1: admissibility passes to the closed auxiliary space.}
+Definition 5.2.17 gives
+\[
+  c_T^0:=\inf_{k\in\Nzero}
+  \K_{\Ltwo\times\Ltwo}(E_k+\dd E_k,F_k)>0 .
+\]
+Let \(P_k:\Ltwo\to F_k\) be the \(L^2(J)\)-orthogonal projector.  Since \(F_k\) is closed,
+\[
+  \|P_k f\|_{L^2(J)}\ge c_T^0\|f\|_{L^2(J)}
+  \qquad\forall f\in E_k+\dd E_k.
+\]
+By continuity, the same estimate holds for all \(f\in\hatF_k\).  Hence
+\[
+  c_T:=\inf_{k\in\Nzero}\K_{\Ltwo\times\Ltwo}(\hatF_k,F_k)\ge c_T^0>0 .
+\]
+
+\paragraph{Step 2: stability with the auxiliary test space.}
+The corrected auxiliary space satisfies the inclusion hypothesis of Corollary 5.2.13:
+\[
+  X_L\times\{w_L(0):w_L\in X_L\}\subseteq \hatY_L,
+\]
+because \(E_k\subseteq \hatF_k\) and \(U_\ell\subseteq V_\ell\subseteq V_L\) for \(\ell\le L\).
+
+If \(\dd X_L\ne\{0\}\), apply Proposition 4.4.12 (equivalently, the tensor-product step behind Proposition 5.2.14) to the temporal pair \((\dotE_k,\hatF_k)\), omitting any initial zero derivative levels.  For every nonzero \(\dotE_k\),
+\[
+  \K_{\Ltwo\times\Ltwo}(\dotE_k,\hatF_k)=1
+\]
+because \(\dotE_k\subseteq\hatF_k\).  Therefore the tensor-product estimate gives
+\[
+  \K_{Y_1'\times Y_1}
+  \left(
+    \sum_{0\le k+\ell\le L}\dotE_k\otimes U_\ell,
+    \hatY_{L,1}
+  \right)
+  \ge \eta .
+\]
+Since
+\[
+  \dd X_L\subseteq \sum_{0\le k+\ell\le L}\dotE_k\otimes U_\ell,
+\]
+we also have
+\[
+  \K_{Y_1'\times Y_1}(\dd X_L,\hatY_{L,1})\ge \eta .
+\]
+Corollary 5.2.13 then yields a constant \(c_1>0\), independent of \(L\), such that
+\[
+  \gam(X_L,\hatY_L)\ge c_1
+\]
+for all levels with \(\dd X_L\ne\{0\}\).
+
+If \(\dd X_L=\{0\}\), then each \(w\in X_L\) is time-independent.  Testing with \(v=(w,w(0))\in\hatY_L\) and using \(a_{\rm shift}=0\) gives
+\[
+  \ip{Bw}{v}
+  =\int_J a(t;w,w)\,dt+\|w(0)\|_H^2
+  \ge a_{\min}\|w\|_{L^2(J;V)}^2.
+\]
+For such \(w\), \(\|w\|_X=\|w\|_{L^2(J;V)}\), while \(\|v\|_Y\le C\|w\|_X\) with \(C\) depending only on \(J\) and the embedding \(V\hookrightarrow H\).  These degenerate levels therefore also satisfy a uniform lower bound.  Consequently,
+\[
+  \inf_{L\in\Nzero}\gam(X_L,\hatY_L)>0 .
+\]
+
+\paragraph{Step 3: transfer from \(\hatY_L\) to \(Y_L\).}
+It remains to prove the step omitted in the printed proof:
+\[
+  \inf_{L\in\Nzero}\K_{Y\times Y}(\hatY_L,Y_L)>0 .
+\]
+Set
+\[
+  W_0:=V_0,
+  \qquad
+  W_j:=V_j\cap V_{j-1}^{\perp_V}\quad (j\ge1).
+\]
+Then \(V_\ell=\bigoplus_{j=0}^\ell W_j\) orthogonally in \(V\).  By nestedness of the temporal spaces,
+\[
+  \hatY_{L,1}=\bigoplus_{j=0}^L \hatF_{L-j}\otimes W_j,
+  \qquad
+  Y_{L,1}=\bigoplus_{j=0}^L F_{L-j}\otimes W_j .
+\]
+Let \(\Pi_L:Y_1\to Y_{L,1}\) be the \(Y_1=L^2(J;V)\)-orthogonal projector.  For
+\[
+  z=\sum_{j=0}^L z_j,
+  \qquad
+  z_j\in\hatF_{L-j}\otimes W_j,
+\]
+the projector acts blockwise as
+\[
+  \Pi_L z=\sum_{j=0}^L (P_{L-j}\otimes I_{W_j})z_j .
+\]
+Using the lower bound from Step 1 and orthogonality of the \(W_j\)-blocks,
+\[
+\begin{aligned}
+  \|\Pi_L z\|_{Y_1}^2
+  &=\sum_{j=0}^L
+    \|(P_{L-j}\otimes I_{W_j})z_j\|_{Y_1}^2  \\
+  &\ge c_T^2\sum_{j=0}^L\|z_j\|_{Y_1}^2
+   =c_T^2\|z\|_{Y_1}^2 .
+\end{aligned}
+\]
+The projection characterization of \(K\) gives
+\[
+  \K_{Y_1\times Y_1}(\hatY_{L,1},Y_{L,1})\ge c_T .
+\]
+The second component is identical in \(\hatY_L\) and \(Y_L\), namely \(V_L\).  Hence
+\[
+  \K_{Y\times Y}(\hatY_L,Y_L)\ge c_T .
+\]
+Finally, the robustness estimate (4.4.34) gives
+\[
+  \gam(X_L,Y_L)
+  \ge \K_{Y\times Y}(\hatY_L,Y_L)\,\gam(X_L,\hatY_L)
+  \ge c_T\,\gam(X_L,\hatY_L).
+\]
+Taking the infimum over \(L\) proves the corrected theorem.
+
+\section*{4. Variants in Remark 5.2.15}
+For full tensor products, anisotropic sparse tensor products, and finite sums of sparse tensor products, the same proof applies after replacing the basic lower set
+\[
+  \{(k,\ell):0\le k+\ell\le L\}
+\]
+by the corresponding lower index set.  In Step 3, each spatial block \(W_j\) is paired with the largest active temporal level allowed by that lower set.  The same blockwise projection estimate then gives the identical lower bound \(c_T\).  This is the missing justification behind the ``without loss of generality'' reduction in the printed proof.
+
+\end{document}
